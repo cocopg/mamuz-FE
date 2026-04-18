@@ -1,9 +1,10 @@
 #root {
   width: 432px;
-  height: 960px;
+  height: 840px;
   margin: 50px auto;
   border-radius: 20px;
   overflow: hidden;
+  background-color: #1A191F;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
@@ -33,6 +34,18 @@
   justify-content: space-around;
   align-items: center;
 
-  background-color: white;
-  border-top: 1px solid #ddd;
+  background-color: #1A191F;
+  box-shadow: 0 0 10px rgba(238, 238, 238, 0.2);
+}
+
+.navBtn{
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.navBtn:hover{
+  color: #4944E0;
+  transform: scale(1.2);
 }
