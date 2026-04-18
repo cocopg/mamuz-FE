@@ -2,9 +2,13 @@ import './App.css'
 import Navbar from './components/navbar'
 
 function App() {
-
   return (
-    <Navbar />
+    <div className="phone">
+      <div className="content">
+        메인 화면
+      </div>
+      <Navbar />
+    </div>
   )
 }
 
