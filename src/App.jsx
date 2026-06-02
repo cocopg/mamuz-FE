@@ -1,12 +1,14 @@
 import './App.css'
-import Navbar from './components/navbar'
+import Navbar from './components/Navbar'
+import { Outlet } from 'react-router-dom'
 
 function App() {
   return (
     <div className="phone">
       <div className="content">
-        메인 화면
+        <Outlet />
       </div>
+
       <Navbar />
     </div>
   )

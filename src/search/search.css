@@ -1,0 +1,176 @@
+/* Search.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.search {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #0f0f18, #121220);
+  color: white;
+  overflow-y: auto;
+  position: relative;
+}
+
+.searchHeader {
+  padding: 20px 16px 0;
+}
+
+.statusBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.time {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.icons {
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.searchTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  flex: 1;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid #4f46e5;
+  background: transparent;
+  padding: 0 16px;
+  color: white;
+  outline: none;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 10px 0 18px;
+}
+
+.recommendSection,
+.recentSection {
+  padding: 0 16px;
+}
+
+.recommendSection h2,
+.recentSection h2 {
+  font-size: 16px;
+  margin-bottom: 18px;
+}
+
+.keywordWrap {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.keywordWrap::-webkit-scrollbar {
+  display: none;
+}
+
+.keywordBtn {
+  min-width: fit-content;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: transparent;
+  color: white;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.recentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.recentHeader button {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.recentList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.recentItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recentLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.clockIcon {
+  font-size: 26px;
+  color: white;
+}
+
+.recentLeft span {
+  font-size: 16px;
+}
+
+.deleteBtn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.bottomArea {
+  padding: 40px 20px 24px;
+}
+
+.confirmBtn {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  background: #4f46e5;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}

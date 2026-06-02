@@ -1,12 +1,33 @@
-function Navbar() {
-    return (
-      <div className="navbar">
-        <button className="navBtn">Home</button>
-        <button className="navBtn">Chat</button>
-        <button className="navBtn">Create</button>
-        <button className="navBtn">Profile</button>
-      </div>
-    )
-  }
+import { useNavigate } from 'react-router-dom'
 
-  export default Navbar
+function Navbar() {
+  const navigate = useNavigate()
+
+  return (
+    <div className="navbar">
+      <button
+        className="navBtn"
+        onClick={() => navigate('/')}
+      >
+        Home
+      </button>
+
+      <button
+        className="navBtn"
+        onClick={() => navigate('/chat-list')}
+      >
+        Chat
+      </button>
+
+      <button className="navBtn">
+        Create
+      </button>
+
+      <button className="navBtn">
+        Profile
+      </button>
+    </div>
+  )
+}
+
+export default Navbar
