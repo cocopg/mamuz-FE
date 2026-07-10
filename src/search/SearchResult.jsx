@@ -1,4 +1,4 @@
-import './searchResult.css'
+import 'src/search/searchResult.css'
 import { IoChevronBack } from 'react-icons/io5'
 import { useNavigate } from 'react-router-dom'
 

@@ -1,4 +1,4 @@
-import './chatList.css'
+import 'src/chat/chatList.css'
 
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'

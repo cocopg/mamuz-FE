@@ -1,4 +1,4 @@
-import "./create.css";
+import "src/create/create.css";
 
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";

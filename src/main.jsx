@@ -7,16 +7,16 @@ import {
   Route,
 } from 'react-router-dom'
 
-import './index.css'
+import 'src/index.css'
 
-import App from './App.jsx'
-import Home from './MainHome/Home.jsx'
-import Search from './search/Search.jsx'
-import SearchResult from './search/SearchResult.jsx'
-import CharacterDetail from './character/CharacterDetail.jsx'
-import ChatRoom from './chat/ChatRoom.jsx'
-import ChatList from './chat/ChatList.jsx'
-import Create from './create/Create.jsx'
+import App from 'src/App.jsx'
+import Home from 'src/MainHome/Home.jsx'
+import Search from 'src/search/Search.jsx'
+import SearchResult from 'src/search/SearchResult.jsx'
+import CharacterDetail from 'src/character/CharacterDetail.jsx'
+import ChatRoom from 'src/chat/ChatRoom.jsx'
+import ChatList from 'src/chat/ChatList.jsx'
+import Create from 'src/create/Create.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
