@@ -168,12 +168,27 @@
 
   background: #181824;
 
-  z-index: 100;
+  z-index: 200;
 
-  border-left: 1px solid rgba(255,255,255,0.05);
+  border-left: 1px solid rgba(255,255,255,.06);
 
   display: flex;
   flex-direction: column;
+}
+
+.menuOverlay {
+  position: absolute;
+
+  top: 56px;          /* 헤더 높이 */
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  z-index: 90;
 }
 
 .menuItem {
@@ -216,7 +231,10 @@
   position: absolute;
   inset: 0;
 
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.6);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 
   display: flex;
   align-items: center;

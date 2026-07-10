@@ -95,34 +95,41 @@ function ChatRoom() {
       </header>
 
       {menuOpen && (
-        <div className="sideMenu">
+        <>
           <div
-            className="menuItem"
-            onClick={() => {
-              setActionType('reset')
-              setShowSaveModal(true)
-              setMenuOpen(false)
-            }}
-          >
-            <h4>새로하기</h4>
+            className="menuOverlay"
+            onClick={() => setMenuOpen(false)}
+          />
 
-            <p>
-              현재 내용을 저장하고
-              다시 시작할 수 있어요
-            </p>
+          <div className="sideMenu">
+            <div
+              className="menuItem"
+              onClick={() => {
+                setActionType('reset')
+                setShowSaveModal(true)
+                setMenuOpen(false)
+              }}
+            >
+              <h4>새로하기</h4>
+
+              <p>
+                현재 내용을 저장하고
+                다시 시작할 수 있어요
+              </p>
+            </div>
+
+            <button
+              className="leaveBtn"
+              onClick={() => {
+                setActionType('leave')
+                setShowSaveModal(true)
+                setMenuOpen(false)
+              }}
+            >
+              대화방 나가기
+            </button>
           </div>
-
-          <button
-            className="leaveBtn"
-            onClick={() => {
-              setActionType('leave')
-              setShowSaveModal(true)
-              setMenuOpen(false)
-            }}
-          >
-            대화방 나가기
-          </button>
-        </div>
+        </>
       )}
 
       <div className="chatBody">
@@ -169,18 +176,21 @@ function ChatRoom() {
       {showSaveModal && (
         <div className="modalOverlay">
           <div className="saveModal">
-            <h3>저장하시겠어요?</h3>
+            <h3>
+              {actionType === 'leave'
+                ? '대화방에서 나갈까요?'
+                : '저장하시겠어요?'}
+            </h3>
 
             <p>
-              현재 대화를 저장한 후
-              이동합니다.
+              {actionType === 'leave'
+                ? '현재 대화방을 나가시겠습니까?\n저장하지 않은 내용은 사라질 수 있습니다.'
+                : '현재 대화를 저장한 후 이동합니다.'}
             </p>
 
             <div className="modalButtons">
               <button
-                onClick={() =>
-                  setShowSaveModal(false)
-                }
+                onClick={() => setShowSaveModal(false)}
               >
                 취소
               </button>
@@ -189,7 +199,9 @@ function ChatRoom() {
                 className="saveBtn"
                 onClick={handleAction}
               >
-                저장 후 이동
+                {actionType === 'leave'
+                  ? '나가기'
+                  : '저장 후 이동'}
               </button>
             </div>
           </div>

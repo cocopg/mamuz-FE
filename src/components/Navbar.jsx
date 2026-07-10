@@ -19,7 +19,8 @@ function Navbar() {
         Chat
       </button>
 
-      <button className="navBtn">
+      <button className="navBtn"
+      onClick={() => navigate('/create')}>
         Create
       </button>
 

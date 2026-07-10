@@ -16,6 +16,7 @@ import SearchResult from './search/SearchResult.jsx'
 import CharacterDetail from './character/CharacterDetail.jsx'
 import ChatRoom from './chat/ChatRoom.jsx'
 import ChatList from './chat/ChatList.jsx'
+import Create from './create/Create.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -26,7 +27,8 @@ createRoot(document.getElementById('root')).render(
           <Route path="search" element={<Search />} />
           <Route path="search-result" element={<SearchResult />} />
           <Route path="character/:id" element={<CharacterDetail />}/>
-          <Route path="chat" element={<ChatRoom />} />
+          <Route path="chatroom/:id" element={<ChatRoom />} />
+          <Route path="create" element={<Create />} />
           <Route path="chat-list" element={<ChatList />} />
         </Route>
       </Routes>

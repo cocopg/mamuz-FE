@@ -4,22 +4,26 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import {
-  IoSearch,
+  IoChevronBack,
   IoSettingsOutline,
   IoStar,
   IoStarOutline,
   IoTrashOutline,
+  IoChevronDown,
 } from 'react-icons/io5'
 
 function ChatList() {
   const navigate = useNavigate()
 
   const [search, setSearch] = useState('')
-  const [deleteMode, setDeleteMode] =
-    useState(false)
+  const [deleteMode, setDeleteMode] = useState(false)
 
-  const [showSetting, setShowSetting] =
-    useState(false)
+  const [showSetting, setShowSetting] = useState(false)
+
+  const [showSort, setShowSort] = useState(false)
+
+  const [sortType, setSortType] =
+    useState('최신순')
 
   const [rooms, setRooms] = useState([
     {
@@ -30,6 +34,8 @@ function ChatList() {
         'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300',
       lastMessage:
         '동해물과 백두산이 마르고 닳도록 하느님이 보우하사',
+      date: '2026-07-04',
+      rank: 35,
     },
     {
       id: 2,
@@ -39,6 +45,8 @@ function ChatList() {
         'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300',
       lastMessage:
         '미국에서 친구가 없는 나에게 먼저 손 내밀어준',
+      date: '2026-07-01',
+      rank: 80,
     },
     {
       id: 3,
@@ -48,6 +56,8 @@ function ChatList() {
         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300',
       lastMessage:
         '겉으로는 웃지만 속으로는 커다란 야망을 품고',
+      date: '2026-06-20',
+      rank: 60,
     },
   ])
 
@@ -72,41 +82,75 @@ function ChatList() {
     )
   }
 
-  const filteredRooms = rooms
+  const filteredRooms = [...rooms]
     .filter((room) =>
       room.name
         .toLowerCase()
         .includes(search.toLowerCase())
     )
-    .sort(
-      (a, b) =>
-        Number(b.favorite) -
-        Number(a.favorite)
-    )
+    .sort((a, b) => {
+      if (a.favorite !== b.favorite) {
+        return Number(b.favorite) - Number(a.favorite)
+      }
+
+      switch (sortType) {
+        case '최신순':
+          return (
+            new Date(b.date) -
+            new Date(a.date)
+          )
+
+        case '최근 대화순':
+          return (
+            new Date(b.date) -
+            new Date(a.date)
+          )
+
+        case '인기순':
+          return b.rank - a.rank
+
+        default:
+          return 0
+      }
+    })
 
   return (
     <div className="chatList">
-
       <header className="chatListHeader">
+        <button
+          className="backBtn"
+          onClick={() => navigate('/')}
+        >
+          <IoChevronBack />
+        </button>
+
         <h2>대화</h2>
 
-        <div className="headerIcons">
-          <IoSearch />
+        <button
+          className="headerBtn"
+          onClick={() =>
+            setShowSetting(!showSetting)
+          }
+        >
+          <IoSettingsOutline />
+        </button>
 
-          <button
-            className="headerBtn"
-            onClick={() =>
-              setShowSetting(true)
-            }
-          >
-            <IoSettingsOutline />
-          </button>
-        </div>
+        {showSetting && (
+          <div className="settingDropdown">
+            <button
+              onClick={() => {
+                setDeleteMode(true)
+                setShowSetting(false)
+              }}
+            >
+              삭제 모드
+            </button>
+          </div>
+        )}
       </header>
 
       <div className="searchBox">
         <input
-          type="text"
           placeholder="검색"
           value={search}
           onChange={(e) =>
@@ -117,7 +161,7 @@ function ChatList() {
 
       {deleteMode && (
         <div className="deleteBanner">
-          <span>삭제</span>
+          <span>삭제 모드</span>
 
           <button
             onClick={() =>
@@ -140,7 +184,9 @@ function ChatList() {
             key={room.id}
             className="chatItem"
             onClick={() =>
-              navigate(`/chat/${room.id}`)
+              navigate(
+                `/chatroom/${room.id}`
+              )
             }
           >
             <img
@@ -182,8 +228,36 @@ function ChatList() {
           </div>
         ))}
 
-      <div className="recentTitle">
-        최신순
+      <div className="sortHeader">
+        <button
+          className="sortBtn"
+          onClick={() =>
+            setShowSort(!showSort)
+          }
+        >
+          {sortType}
+          <IoChevronDown />
+        </button>
+
+        {showSort && (
+          <div className="sortDropdown">
+            {[
+              '최신순',
+              '최근 대화순',
+              '인기순',
+            ].map((item) => (
+              <button
+                key={item}
+                onClick={() => {
+                  setSortType(item)
+                  setShowSort(false)
+                }}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {filteredRooms
@@ -193,7 +267,9 @@ function ChatList() {
             key={room.id}
             className="chatItem"
             onClick={() =>
-              navigate(`/chat/${room.id}`)
+              navigate(
+                `/chatroom/${room.id}`
+              )
             }
           >
             <img
@@ -238,41 +314,6 @@ function ChatList() {
             )}
           </div>
         ))}
-
-      {showSetting && (
-        <div
-          className="modalOverlay"
-          onClick={() =>
-            setShowSetting(false)
-          }
-        >
-          <div
-            className="settingModal"
-            onClick={(e) =>
-              e.stopPropagation()
-            }
-          >
-            <button
-              className="settingItem"
-              onClick={() => {
-                setDeleteMode(true)
-                setShowSetting(false)
-              }}
-            >
-              삭제 모드
-            </button>
-
-            <button
-              className="settingItem"
-              onClick={() =>
-                setShowSetting(false)
-              }
-            >
-              취소
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   )
 }
