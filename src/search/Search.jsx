@@ -1,4 +1,4 @@
-import './Search.css'
+import './search/search.css'
 import { IoChevronBack } from 'react-icons/io5'
 import { IoClose } from 'react-icons/io5'
 import { IoTimeOutline } from 'react-icons/io5'
