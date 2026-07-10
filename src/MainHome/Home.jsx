@@ -1,4 +1,4 @@
-import './home.css'
+import './Home.css'
 import { useNavigate } from 'react-router-dom'
 import { IoSearch } from 'react-icons/io5'
 
